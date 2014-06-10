@@ -1,0 +1,27 @@
+#!/bin/sh
+#-----------------------------------------------------------------------------
+# Copyright (c) 10/2013 JSA: TJNAF DAQ Group. All rights reserved.
+# This software was developed under the United States Government license.
+# Initiated by V. Gyurjyan
+#
+#   clara-platform
+#
+#   Starts CLARA platform.
+#   author gurjyan
+#-----------------------------------------------------------------------------
+
+SCRIPT_DIR=`dirname $0`
+DISTRO_DIR=$SCRIPT_DIR/../ ; export DISTRO_DIR
+CLARA_SERVICES=$DISTRO_DIR/lib/services
+echo +-------------------------------------------------------------------------
+echo "| Starting CLARA-PLATFORM with CLARA_SERVICES = " $CLARA_SERVICES
+echo +-------------------------------------------------------------------------
+echo "\n"
+
+JVMOPTIONS=""
+CLASSPATH="$CLARA_SERVICES/.:$CLARA_SERVICES/lib/*"
+MAIN=org.jlab.coda.clara.platform.CPlatform
+
+java $JVMOPTIONS -cp $CLASSPATH $MAIN "$@"
+
+#$JAVA_HOME/bin/java -Xms200m -Xmx500m -Dcom.sun.management.jmxremote
