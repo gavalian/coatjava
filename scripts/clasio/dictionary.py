@@ -5,7 +5,7 @@
 import sys
 from java.lang         import System
 from java.lang         import String
-from   org.jlab.evio.clas12  import EvioDataDictionary, EvioFactory
+from  org.jlab.evio.clas12  import EvioDataDictionary, EvioFactory
 
 #-----------------------------------------------------------
 # loading the dictionary from current directory.

@@ -91,4 +91,4 @@ echo "*    Running COAT-JAVA Jython Scripts   *"
 echo "*****************************************"
 echo " "
 
-jython -Dpython.path="$JYPATH" $*
+$CLAS12DIR/lib/jython/jython -Dpython.path="$JYPATH" $*
