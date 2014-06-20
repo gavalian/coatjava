@@ -22,7 +22,7 @@ fi
 done 
 #--------------------------------------------------------------
 # Adding supporting AIDA jar files
-for i in `ls -a $DATAMINING/lib/mathplot/*.jar`
+for i in `ls -a $DATAMINING/lib/clas/core/*.jar`
 do
 if [ -z "${JYPATH}" ] ; then
 JYPATH="$i"
