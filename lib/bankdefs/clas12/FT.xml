@@ -107,4 +107,23 @@
         <column name = "hitn"  num = "99"  type = "int32"  info = "hit number"/>
       </section>
     </bank>
+
+    <bank name="FTCALRec" tag="910" info="Reconstructed FTCAL Cluster Information">
+      <section name="clusters" tag="911" num = "0" info="Reconstructed Clusters in FT calorimeter">
+        <column name="size"          type="int32"   num="1"  info="Cluster size" />
+        <column name="id"            type="int32"   num="2"  info="Cluster ID" />
+        <column name="clusX"         type="float64" num="3"  info="Cluster centroid X moment" />
+        <column name="clusY"         type="float64" num="4"  info="Cluster centroid Y moment" />
+        <column name="clusXX"        type="float64" num="5"  info="Cluster XX moment" />
+        <column name="clusYY"        type="float64" num="6"  info="Cluster YY moment" />
+        <column name="clusSigmaX"    type="float64" num="7"  info="Cluster width in x" />
+        <column name="clusSigmaY"    type="float64" num="8"  info="Cluster width in y" />
+        <column name="clusRadius"    type="float64" num="9"  info="Cluster radius" />
+        <column name="clusTime"      type="float64" num="10" info="Cluster timing information" />
+        <column name="clusEnergy"    type="float64" num="11" info="Cluster total energy" />
+        <column name="clusMaxEnergy" type="float64" num="12" info="Cluster maximum energy" />
+        <column name="clusTheta"     type="float64" num="13" info="Cluster theta" />
+        <column name="clusPhi"       type="float64" num="14" info="Cluster phi" />
+      </section>
+    </bank>
 </evio_dictionary>
