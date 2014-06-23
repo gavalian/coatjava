@@ -15,4 +15,7 @@ echo +-------------------------------------------------------------------------
 echo "\n"
 
 echo "INSTALLATION DIRECTORY = " $CLARA_HOME
-java -cp "$DATAMINING/lib/clas/*" org.jlab.coda.eventViewer.EventTreeFrame $*
+echo "LIBRARY DIRECTORY      = " $DATAMINING/lib/clas/core
+
+#java -cp "$DATAMINING/lib/clas/core/*" org.jlab.coda.eventViewer.EventTreeFrame $*
+java -cp "$DATAMINING/lib/clas/core/*" org.jlab.coda.jevio.gui.EventTreeFrame $*
