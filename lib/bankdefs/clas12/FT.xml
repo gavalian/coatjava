@@ -126,4 +126,20 @@
         <column name="clusPhi"       type="float64" num="14" info="Cluster phi" />
       </section>
     </bank>
+
+    <bank name="FTHODORec" tag="810" info="Reconstructed FTHODO Signal Information">
+      <section name="signals" tag="811" num = "0" info="Reconstructed signals in FT hodoscope">
+        <column name="size"         type="int32"   num="1"  info="Signal size" />
+        <column name="id"           type="int32"   num="2"  info="Signal ID" />
+        <column name="signalX"      type="float64" num="3"  info="Signal centroid X moment" />
+        <column name="signalY"      type="float64" num="4"  info="Signal centroid Y moment" />
+        <column name="signalDX"     type="float64" num="5"  info="Signal width in x" />
+        <column name="signalDY"     type="float64" num="6"  info="Signal width in y" />
+        <column name="signalTime"   type="float64" num="7"  info="Signal timing information" />
+        <column name="signalEnergy" type="float64" num="8"  info="Signal energy" />
+        <column name="signalTheta"  type="float64" num="9"  info="Signal theta" />
+        <column name="signalPhi"    type="float64" num="10" info="Signal phi" />
+      </section>
+    </bank>
+
 </evio_dictionary>
