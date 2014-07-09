@@ -1,36 +1,99 @@
 <evio_dictionary>
-  <bank name="BST" tag="100" info="Simulated BST Hit Information">
-    <section name="true" tag="101" num="0" info="True Values">
-      <column name="pid"     num="1"  type="int32"   info="ID of the first particle entering the sensitive volume"/>
-      <column name="mpid"    num="2"  type="int32"   info="ID of the mother of the first particle entering the sensitive volume"/>
-      <column name="tid"     num="3"  type="int32"   info="Track ID of the first particle entering the sensitive volume"/>
-      <column name="mtid"    num="4"  type="int32"   info="Track ID of the mother of the first particle entering the sensitive volume"/>
-      <column name="otid"    num="5"  tpye="int32"   info="Track ID of the original track that generated the first particle entering the sensitive volume"/>
-      <column name="trackE"  num="6"  type="float64" info="Energy of the track"/>
-      <column name="totEdep" num="7"  type="float64" info="Total Energy Deposited"/>
-      <column name="avgX"    num="8"  type="float64" info="Average X position in global reference system"/>
-      <column name="avgY"    num="9"  type="float64" info="Average Y position in global reference system"/>
-      <column name="avgZ"    num="10" type="float64" info="Average Z position in global reference system"/>
-      <column name="avgLx"   num="11" type="float64" info="Average X position in local reference system"/>
-      <column name="avgLy"   num="12" type="float64" info="Average Y position in local reference system"/>
-      <column name="avgLz"   num="13" type="float64" info="Average Z position in local reference system"/>
-      <column name="px"      num="14" type="float64" info="x component of momentum of the particle entering the sensitive volume"/>
-      <column name="py"      num="15" type="float64" info="y component of momentum of the particle entering the sensitive volume"/>
-      <column name="pz"      num="16" type="float64" info="z component of momentum of the particle entering the sensitive volume"/>
-      <column name="vx"      num="17" type="float64" info="x component of primary vertex of the particle entering the sensitive volume"/>
-      <column name="vy"      num="18" type="float64" info="y component of primary vertex of the particle entering the sensitive volume"/>
-      <column name="vz"      num="19" type="float64" info="z component of primary vertex of the particle entering the sensitive volume"/>
-      <column name="mvx"     num="20" type="float64" info="x component of primary vertex of the mother of the particle entering the sensitive volume"/>
-      <column name="mvy"     num="21" type="float64" info="y component of primary vertex of the mother of the particle entering the sensitive volume"/>
-      <column name="mvz"     num="22" type="float64" info="z component of primary vertex of the mother of the particle entering the sensitive volume"/>
-      <column name="avgT"    num="23" type="float64" info="Average time"/>
-      <column name="hitn"    num="99" type="int32"   info="Hit1 Number"/>
-    </section>
-    <section name="dgtz" tag="102" num="0" info="Digitized information">
-      <column name="layer"  type="int32"  num="1" info="Layer Number" />
-      <column name="sector" type="int32"  num="2" info="Sector Number" />
-      <column name="strip"  type="int32"  num="3" info="Strip Number" />
-      <column name="hitn"   type="int32"  num="99" info="Hit Number" />
-    </section>
-  </bank>
+    <bank name="BST" tag="100" info="Simulated BST Hit Information">
+        <section name="true" tag="101" num="0" info="True Values">
+            <column name="pid"     num="1"  type="int32"   info="ID of the first particle entering the sensitive volume"/>
+            <column name="mpid"    num="2"  type="int32"   info="ID of the mother of the first particle entering the sensitive volume"/>
+            <column name="tid"     num="3"  type="int32"   info="Track ID of the first particle entering the sensitive volume"/>
+            <column name="mtid"    num="4"  type="int32"   info="Track ID of the mother of the first particle entering the sensitive volume"/>
+            <column name="otid"    num="5"  tpye="int32"   info="Track ID of the original track that generated the first particle entering the sensitive volume"/>
+            <column name="trackE"  num="6"  type="float64" info="Energy of the track"/>
+            <column name="totEdep" num="7"  type="float64" info="Total Energy Deposited"/>
+            <column name="avgX"    num="8"  type="float64" info="Average X position in global reference system"/>
+            <column name="avgY"    num="9"  type="float64" info="Average Y position in global reference system"/>
+            <column name="avgZ"    num="10" type="float64" info="Average Z position in global reference system"/>
+            <column name="avgLx"   num="11" type="float64" info="Average X position in local reference system"/>
+            <column name="avgLy"   num="12" type="float64" info="Average Y position in local reference system"/>
+            <column name="avgLz"   num="13" type="float64" info="Average Z position in local reference system"/>
+            <column name="px"      num="14" type="float64" info="x component of momentum of the particle entering the sensitive volume"/>
+            <column name="py"      num="15" type="float64" info="y component of momentum of the particle entering the sensitive volume"/>
+            <column name="pz"      num="16" type="float64" info="z component of momentum of the particle entering the sensitive volume"/>
+            <column name="vx"      num="17" type="float64" info="x component of primary vertex of the particle entering the sensitive volume"/>
+            <column name="vy"      num="18" type="float64" info="y component of primary vertex of the particle entering the sensitive volume"/>
+            <column name="vz"      num="19" type="float64" info="z component of primary vertex of the particle entering the sensitive volume"/>
+            <column name="mvx"     num="20" type="float64" info="x component of primary vertex of the mother of the particle entering the sensitive volume"/>
+            <column name="mvy"     num="21" type="float64" info="y component of primary vertex of the mother of the particle entering the sensitive volume"/>
+            <column name="mvz"     num="22" type="float64" info="z component of primary vertex of the mother of the particle entering the sensitive volume"/>
+            <column name="avgT"    num="23" type="float64" info="Average time"/>
+            <column name="hitn"    num="99" type="int32"   info="Hit1 Number"/>
+        </section>
+        <section name="dgtz" tag="102" num="0" info="Digitized information">
+            <column name="layer"  type="int32"  num="1" info="Layer Number" />
+            <column name="sector" type="int32"  num="2" info="Sector Number" />
+            <column name="strip"  type="int32"  num="3" info="Strip Number" />
+            <column name="hitn"   type="int32"  num="99" info="Hit Number" />
+        </section>
+    </bank>
+    
+    <bank name = "BSTRec" tag = "110" info = "Reconstructed BST Information">
+        <section name = "Hits" tag = "111" info = "reconstructed BST hits on track">
+            <column name = "sector"      num = "1" type = "int8"   info = "hit sector"/>
+            <column name = "layer"       num = "2" type = "int8"   info = "hit layer"/>
+            <column name = "wire"        num = "3" type = "int16"   info = "hit strip"/>
+            <column name = "fitResidual" num = "4" type = "float64" info = "fitted hit residual"/>
+            <column name = "trkingStat"  num = "5" type = "int8"   info = "tracking status"/>
+            <column name = "clusterID"   num = "6" type = "int16"   info = "associated cluster ID"/>
+            <column name = "crossID"     num = "7" type = "int16"   info = "associated cross ID"/>
+            <column name = "trackID"     num = "8" type = "int16"   info = "associated track ID"/>
+        </section>
+        <section name = "Clusters" tag = "112" info = "reconstructed BST clusters">
+            <column name = "ID"       num = "1" type = "int16"   info = "ID"/>
+            <column name = "sector"   num = "2" type = "int8"   info = "sector"/>
+            <column name = "layer"    num = "3" type = "int8"   info = "layer"/>
+            <column name = "size"     num = "4" type = "int8"   info = "cluster size"/>
+            <column name = "ETot"     num = "5" type = "float64" info = "cluster total energy"/>
+            <column name = "seedE"    num = "6" type = "float64" info = "cluster seed strip energy"/>
+            <column name = "crossID"  num = "7" type = "int16"   info = "associated cross ID"/>
+            <column name = "trackID"  num = "8" type = "int16"   info = "associated track ID"/>
+        </section>
+        <section name = "Crosses" tag = "113" info = "reconstructed BST crosses">
+            <column name = "ID"      num = "1" type = "int16"    info = "ID"/>
+            <column name = "sector"  num = "2" type = "int8"    info = "sector"/>
+            <column name = "region"  num = "3" type = "int8"    info = "region"/>
+            <column name = "x"       num = "4" type = "float64"  info = "BST cross x-coordinate"/>
+            <column name = "y"       num = "5" type = "float64"  info = "BST cross y-coordinate"/>
+            <column name = "z"       num = "6" type = "float64"  info = "BST cross z-coordinate"/>
+            <column name = "err_x"   num = "7" type = "float64"  info = "BST cross x-coordinate error"/>
+            <column name = "err_y"   num = "8" type = "float64"  info = "BST cross y-coordinate error"/>
+            <column name = "err_z"   num = "9" type = "float64"  info = "BST cross z-coordinate error"/>
+            <column name = "ux"      num = "10" type = "float64" info = "BST cross x-direction (track unit tangent vector at the cross)"/>
+            <column name = "uy"      num = "11" type = "float64" info = "BST cross y-direction (track unit tangent vector at the cross)"/>
+            <column name = "uz"      num = "12" type = "float64" info = "BST cross z-direction (track unit tangent vector at the cross)"/>
+            <column name = "trackID" num = "13" type = "int16"   info = "associated track ID"/>
+        </section>
+        <section name = "Tracks" tag = "114" info = "reconstructed BST tracks">
+            <column name = "ID"            num = "1"  type = "int16"    info = "ID"/>
+            <column name = "fittingMethod" num = "2"  type = "int8"    info = "fitting method (1 for global fit, 2 for Kalman Filter)"/>
+            <column name = "c_x"           num = "3"  type = "float64"  info = "Last BST Region cross x-position in the lab"/>
+            <column name = "c_y"           num = "4"  type = "float64"  info = "Last BST Region cross y-position in the lab"/>
+            <column name = "c_z"           num = "5"  type = "float64"  info = "Last BST Region cross z-position in the lab"/>
+            <column name = "c_ux"          num = "6"  type = "float64"  info = "Last BST Region cross unit x-direction vector in the lab"/>
+            <column name = "c_uy"          num = "7"  type = "float64"  info = "Last BST Region cross unit y-direction vector in the lab"/>
+            <column name = "c_uz"          num = "8"  type = "float64"  info = "Last BST Region cross unit z-direction vector in the lab"/>
+            <column name = "q"             num = "9"  type = "int8"    info = "charge"/>
+            <column name = "p"             num = "10" type = "float64"  info = "total momentum"/>
+            <column name = "pt"            num = "11" type = "float64"  info = "transverse momentum"/>
+            <column name = "phi0"          num = "12" type = "float64"  info = "helical track fit parameter: phi at DOCA" />
+            <column name = "tandip"        num = "13" type = "float64"  info = "helical track fit parameter: dip angle" />
+            <column name = "z0"            num = "14" type = "float64"  info = "helical track fit parameter: value of z at the DOCA" />
+            <column name = "d0"            num = "15" type = "float64"  info = "helical track fit parameter: Distance of Closest Approach" />
+            <column name = "cov_d02"       num = "16" type = "float64"  info = "helical track fit covariance matrix element : delta_d0^2" />
+            <column name = "cov_d0phi0"    num = "17" type = "float64"  info = "helical track fit covariance matrix element : delta_d0.delta_phi0" />
+            <column name = "cov_d0rho"     num = "18" type = "float64"  info = "helical track fit covariance matrix element : delta_d0.delta_rho" />
+            <column name = "cov_phi02"     num = "19" type = "float64"  info = "helical track fit covariance matrix element : delta_phi0^2" />
+            <column name = "cov_phi0rho"   num = "20" type = "float64"  info = "helical track fit covariance matrix element : delta_phi0.delta_rho" />
+            <column name = "cov_rho2"      num = "21" type = "float64"  info = "helical track fit covariance matrix element : delta_rho.delta_rho" />
+            <column name = "cov_z02"       num = "22" type = "float64"  info = "helical track fit covariance matrix element : delta_z0^2" />
+            <column name = "cov_tandip2"   num = "23" type = "float64"  info = "helical track fit covariance matrix element : delta_tandip^2" />
+        </section>
+    </bank>
 </evio_dictionary>
