@@ -108,6 +108,39 @@
  </section>
 </bank>
 
+<bank name = "HBTrackingExp" tag = "1330" info = "reconstructed hit-based tracking DC info">
+ <section name = "HBHits" tag = "1331" info = "reconstructed hit-based tracking DC hits">
+      <column name = "sector" num = "1" type = "int32" info = "hit sector"/>
+      <column name = "superlayer" num = "2" type = "int32" info = "hit superlayer"/>
+      <column name = "layer" num = "3" type = "int32" info = "hit layer"/>
+      <column name = "wire" num = "4" type = "int32" info = "hit wire"/>
+      <column name = "LR" num = "5" type = "int32" info = "left-right ambiguity assignment"/>
+      <column name = "locX" num = "6" type = "float64" info = "x in planar local coordinate system"/>
+      <column name = "locY" num = "7" type = "float64" info = "y in planar local coordinate"/> 
+      <column name = "X" num = "8" type = "float64" info = "wire x-coordinate  in tilted-sector"/>
+      <column name = "Z" num = "9" type = "float64" info = "wire z-coordinate  in tilted-sector"/>
+      <column name = "clusterID" num = "10" type = "int32" info = "associated cluster ID"/>
+      <column name = "segmentID" num = "11" type = "int32" info = "associated segment ID"/>
+      <column name = "crossID" num = "12" type = "int32" info = "associated cross ID"/>
+      <column name = "trackID" num = "13" type = "int32" info = "associated track ID"/>
+ </section>
+ <section name = "HBClusters" tag = "1332" info = "reconstructed hit-based tracking DC clusters">
+      <column name = "ID" num = "1" type = "int32" info = "ID"/>
+      <column name = "sector" num = "2" type = "int32" info = "sector"/>
+      <column name = "superlayer" num = "3" type = "int32" info = "superlayer"/>
+      <column name = "segmentID" num = "4" type = "int32" info = "associated segment ID"/>
+      <column name = "crossID" num = "5" type = "int32" info = "associated cross ID"/>
+      <column name = "trackID" num = "6" type = "int32" info = "associated track ID"/>
+ </section> 
+ 
+ <section name = "HBSegments" tag = "1333" info = "reconstructed hit-based tracking DC segments">
+      <column name = "ID" num = "1" type = "int32" info = "ID"/>
+      <column name = "sector" num = "1" type = "int32" info = "sector"/>
+      <column name = "superlayer" num = "2" type = "int32" info = "superlayer"/>
+      <column name = "crossID" num = "3" type = "int32" info =	"associated cross ID"/>
+      <column name = "trackID" num = "4" type = "int32" info = "associated track ID"/>
+ </section>
+ </bank>
 
  <bank name = "TimeBasedTrkg" tag = "1320" info = "reconstructed time-based tracking DC info">
    <section name = "TBHits" tag = "1321" info = "reconstructed time-based tracking DC hits">
