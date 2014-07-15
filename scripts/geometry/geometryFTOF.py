@@ -20,14 +20,17 @@ for slayer in range(0,3):
     ftofLayer = ftofDetector.getLayer(0,slayer,0)
     n = ftofLayer.numberOfComponents()
     for i in range(0,n):
+        dr = ftofLayer.getDrawable(i,0.0)
+        print ' path size = ',dr.nodes()
+        print dr.toString()
         mid = ftofLayer.getMidpoint(i)
         len = ftofLayer.getLength(i)
         shape = ftofLayer.getShape(i)
         line  = ftofLayer.getLine(i)
-        print ' length = ',len, line.toString()
+        #print ' length = ',len, line.toString()
         nfaces = shape.size()
-        for face in range(0,nfaces):
-            print shape.face(face).point(0).toString()
-            print shape.face(face).point(1).toString()
-            print shape.face(face).point(2).toString()
+        #for face in range(0,nfaces):
+        #    print shape.face(face).point(0).toString()
+        #    print shape.face(face).point(1).toString()
+        #    print shape.face(face).point(2).toString()
 
