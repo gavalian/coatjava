@@ -25,22 +25,28 @@ print '\n\n\n------>'
 for s in range(0,6):
     print 'super Layer = ',s
     for i in range(0,6):
-        dcLayerU     = DCLayerFactory.createLayer(dataProvider,0,s,i)
-        dcLayerU.show()
+        dcLayerU     = dcDetector.getLayer(0,s,i)
+        n = dcLayerU.numberOfComponents()
+        print 'number of wires = ', n
+        for w in range(0,n):
+            wire = dcLayerU.getLine(w)
+            print ' wire ----> ', w, wire.origin().x(),wire.origin().y(),wire.origin().z(),
+            print wire.end().x(),wire.end().y(),wire.end().z()
+
 
 #ecLayerV     = ECLayerFactory.createLayer(dataProvider,0,0,1)
 #ecLayerV.show()
 #ecLayerW     = ECLayerFactory.createLayer(dataProvider,0,0,2)
 #ecLayerW.show()
 
-dcLayerU     = DCLayerFactory.createLayer(dataProvider,0,0,0)
-for i in range(0,112):
-    line = dcLayerU.getLine(i)
-    #print i,line.origin().x(),line.origin().y(),line.end().x(),line.end().y()
+#dcLayerU     = DCLayerFactory.createLayer(dataProvider,0,0,0)
+#for i in range(0,112):
+#    line = dcLayerU.getLine(i)
+#print i,line.origin().x(),line.origin().y(),line.end().x(),line.end().y()
 
 path = Path3D()
 
-for i in range(0,10):
+for i in range(0,1):
     path.generateRandom(0.0,0.0,0.0,10.0,35.0,-180.,180.,15000.0,6)
     hits = dcDetector.getLayerHits(path)
     #print '-------------------------> EVENT ',i, hits.size()
