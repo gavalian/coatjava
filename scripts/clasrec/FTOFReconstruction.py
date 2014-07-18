@@ -21,12 +21,13 @@ from  org.jlab.rec.ftof     import FTOFReconstruction
 inputFile = sys.argv[1]
 
 writer = EvioDataSync()
-writer.open('htcc_reconstruction_output.evio')
+writer.open('ftof_reconstruction_output.evio')
 
 reader = EvioSource()
 reader.open(inputFile)
 
 ftofProc = FTOFReconstruction()
+ftofProc.init()
 
 icounter = 0
 while(reader.hasEvent()):
