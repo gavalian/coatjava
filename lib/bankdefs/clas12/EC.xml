@@ -73,4 +73,22 @@
       <column name = "hitn"       num = "99" type = "int32" info = "hit number"/>
    </section>
 </bank>
+
+<bank name="ECRec" tag="1520" info="EC Cluster Information Information">
+  <section name="clusters" tag="1524" num="0" info="Reconstructed clusters">
+    <column name = "sector"      num = "1"  type = "int32"   info = "sector number"/>
+    <column name = "superlayer"  num = "2"  type = "int32"   info = "superlayer"/>
+    <column name = "energy"      num = "3"  type = "float64" info = "superlayer"/>
+    <column name = "chi2"        num = "4"  type = "float64" info = "superlayer"/>
+    <column name = "widthU"      num = "5"  type = "float64" info = "width in U layer"/>
+    <column name = "widthV"      num = "6"  type = "float64" info = "width in V layer"/>
+    <column name = "widthW"      num = "7"  type = "float64" info = "width in W layer"/>
+    <column name = "X"           num = "8"  type = "float64" info = "x coordinate"/>
+    <column name = "Y"           num = "9"  type = "float64" info = "y coordinate"/>
+    <column name = "Z"           num = "10" type = "float64" info = "z coordinate"/>
+    <column name = "dX"          num = "11" type = "float64" info = "x coordinate error"/>
+    <column name = "dY"          num = "12" type = "float64" info = "y coordinate error"/>
+    <column name = "dZ"          num = "13" type = "float64" info = "z coordinate error"/>
+  </section>
+</bank>
 </evio_dictionary>

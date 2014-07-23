@@ -32,7 +32,7 @@ ecProc.init()
 icounter = 0
 while(reader.hasEvent()):
     event = reader.getNextEvent()
-    print '----> processing the event ------------------------------------'
+    #print '----> processing the event ------------------------------------'
     ecProc.processEvent(event)
     writer.writeEvent(event)
 
