@@ -4,12 +4,17 @@
 from org.jlab.geom.detector.ec   import ECFactory
 from org.jlab.clas12.dbdata import DataBaseLoader
 from org.jlab.geom.prim  import Path3D,Face3D,Line3D,Point3D,Transformation3D
+from java.lang import Math
 import random
 import math
+import sys
 
 #===================================================================
 # 
 #===================================================================
+
+thetaAngle = sys.argv[1]
+phiAngle   = sys.argv[2]
 
 data = DataBaseLoader.getCalorimeterConstants()
 print data.toString()
@@ -18,36 +23,21 @@ factory = ECFactory()
 ecDetector   = factory.createDetectorCLAS(data)
 ecDetector.show()
 
+pathMag   = 15000.0
+pathPhi   = float(phiAngle)/57.29
+pathTheta = float(thetaAngle)/57.29 
+
 path = Path3D()
+path.addPoint(0.0,0.0,0.0)
+path.addPoint(pathMag*Math.sin(pathTheta)*Math.cos(pathPhi),pathMag*Math.sin(pathTheta)*Math.sin(pathPhi),pathMag*Math.cos(pathTheta))
 
-for i in range(0,10000):
-    path.generateRandom(0.0,0.0,0.0,5.0,10.0,-180.,180.,15000.0,6)
-    #hits = ecDetector.getLayerHits(path)
-    hits = ecDetector.getHits(path)
-    print '-------------------------> EVENT ',i
-    for hit in hits:
-        print hit.toString()
-#        print hit.getSector(),hit.position().x(),hit.position().y(),hit.position().z()
+hits = ecDetector.getHits(path)
+print '\n-->\n'
+for hit in hits:
+    print hit.toString()
 
 
-#surf = ecLayerV.getBoundary()
-#for i in range(0,surf.size()):
-#    face = surf.face(i)
-#    print 'TLine *l = new TLine(',
-#    print face.point(0).x(),',',
-#    print face.point(0).y(),',',
-#    print face.point(1).x(),',',
-#    print face.point(1).y(),');'
-#    print '\nl->Draw();\n'   
-#    print 'TLine *l = new TLine(',
-#    print face.point(1).x(),',',
-#    print face.point(1).y(),',',
-#    print face.point(2).x(),',',
-#    print face.point(2).y(),');'
-#    print '\nl->Draw();\n'
-#    print 'TLine *l = new TLine(',
-#    print face.point(2).x(),',',
-#    print face.point(2).y(),',',
-#    print face.point(0).x(),',',
-#    print face.point(0).y(),');'
-#    print '\nl->Draw();\n'
+point = Point3D(0.0,0.0,697.7)
+point.rotateY(25.0/59.27)
+
+print point.toString()
