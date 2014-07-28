@@ -41,3 +41,18 @@ point = Point3D(0.0,0.0,697.7)
 point.rotateY(25.0/59.27)
 
 print point.toString()
+
+
+layer = ecDetector.getSector(0).getSuperlayer(0).getLayer(0)
+
+ncomp = layer.getNumComponents()
+
+for i in range(0,ncomp):
+    point = layer.getComponent(i).getMidpoint()
+    print 'PCAL U View Paddle ',i+1,point.toString()
+
+layerIN = ecDetector.getSector(0).getSuperlayer(1).getLayer(0)
+
+for i in range(0,layerIN.getNumComponents()):
+    point = layerIN.getComponent(i).getMidpoint()
+    print 'ECINNER U View Paddle ',i+1,point.toString()

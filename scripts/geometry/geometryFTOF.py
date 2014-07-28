@@ -1,38 +1,44 @@
+#===================================================================
+# FULL geometry test
+#===================================================================
+from org.jlab.geom.detector.ec    import ECFactory
+from org.jlab.geom.detector.ftof  import FTOFFactory
 from org.jlab.clas12.dbdata import DataBaseLoader
-from org.jlab.geom.detector.ftof import FTOFFactory
+from org.jlab.geom.prim  import Path3D,Face3D,Line3D,Point3D,Transformation3D
+from java.lang import Math
 import random
 import math
-from Particle import Particle
+import sys
+
+#===================================================================
+# 
+#===================================================================
+
+thetaAngle = sys.argv[1]
+phiAngle   = sys.argv[2]
+
+data = DataBaseLoader.getTimeOfFlightConstants()
+print data.toString()
+
+factory = FTOFFactory()
+ftofDetector   = factory.createDetectorCLAS(data)
+#ecDetector.show()
+
+pathMag   = 15000.0
+pathPhi   = float(phiAngle)/57.29
+pathTheta = float(thetaAngle)/57.29 
+
+path = Path3D()
+path.addPoint(0.0,0.0,0.0)
+path.addPoint(pathMag*Math.sin(pathTheta)*Math.cos(pathPhi),pathMag*Math.sin(pathTheta)*Math.sin(pathPhi),pathMag*Math.cos(pathTheta))
+
+hits = ftofDetector.getHits(path)
+print '\n-->\n'
+for hit in hits:
+    print hit.toString()
 
 
-sec_id = 0
-spl_id = 0
-lyr_id = 0
+point = Point3D(0.0,0.0,697.7)
+point.rotateY(25.0/59.27)
 
-dataProvider = DataBaseLoader.getTimeOfFlightConstants()
-print dataProvider.toString()
-
-factory  = FTOFFactory()
-#sector   = factory.makeSector(dataProvider,0)
-detector = factory.makeDetector(dataProvider)
-
-detector.show()
-
-print 'FTOF detector      SECTORS = ',detector.getNumSectors()
-
-sector = detector.getSector(sec_id)
-
-print 'FTOF sector 0  SUPERLAYERS = ', sector.getNumSuperLayers()
-
-superlayer = sector.getSuperLayer(spl_id)
-
-print 'FTOF sector 0       LAYERS = ', superlayer.getNumLayers()
-
-layer = superlayer.getLayer(lyr_id)
-
-print 'FTOF sector 0      SENSORS = ', layer.getNumSensors()
-
-for i in range(0,layer.getNumSensors()):
-    print ' sensor ',i,' midpoint = ',layer.getSensor(i).getMidpoint(),
-    print '   direction ',i,' midpoint = ',layer.getSensor(i).getDirection(),
-
+print point.toString()
