@@ -14,31 +14,15 @@ import sys
 # 
 #===================================================================
 
-thetaAngle = sys.argv[1]
-phiAngle   = sys.argv[2]
-
-data = DataBaseLoader.getTimeOfFlightConstants()
+data = DataBaseLoader.getConstantsFTOF()
 print data.toString()
 
 factory = FTOFFactory()
-ftofDetector   = factory.createDetectorCLAS(data)
+ftofDetector   = factory.createDetectorLocal(data)
 #ecDetector.show()
+layerA = ftofDetector.getSector(0).getSuperlayer(0).getLayer(0)
 
-pathMag   = 15000.0
-pathPhi   = float(phiAngle)/57.29
-pathTheta = float(thetaAngle)/57.29 
-
-path = Path3D()
-path.addPoint(0.0,0.0,0.0)
-path.addPoint(pathMag*Math.sin(pathTheta)*Math.cos(pathPhi),pathMag*Math.sin(pathTheta)*Math.sin(pathPhi),pathMag*Math.cos(pathTheta))
-
-hits = ftofDetector.getHits(path)
-print '\n-->\n'
-for hit in hits:
-    print hit.toString()
-
-
-point = Point3D(0.0,0.0,697.7)
-point.rotateY(25.0/59.27)
-
-print point.toString()
+for c in range(0,layerA.getNumComponents()):
+    comp = layerA.getComponent(c)
+    mp   = comp.getMidpoint()
+    print 'COMP ',c, mp.toString()
