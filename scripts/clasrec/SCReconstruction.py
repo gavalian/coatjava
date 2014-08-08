@@ -12,7 +12,7 @@ from  org.jlab.evio.clas12  import EvioDataBank
 from  org.jlab.evio.clas12  import EvioDataSync
 from  org.jlab.rec.sc       import SCReconstruction
 from  org.jlab.clas12.seb   import SEBEventBuilderDebug
-
+from  org.jlab.rec.ec       import ECReconstruction
 #-----------------------------------------------------------
 # Initilizing EvioSource object. It in turn initializes 
 # EvioFactory which loads the dictionary from directory
@@ -33,11 +33,15 @@ ftofProc.init()
 builder = SEBEventBuilderDebug()
 builder.init()
 
+ecProc = ECReconstruction()
+ecProc.init()
+
 icounter = 0
 while(reader.hasEvent()):
     event = reader.getNextEvent()
     builder.processEvent(event)
     ftofProc.processEvent(event)
+    ecProc.processEvent(event)
     writer.writeEvent(event)
 
 print 'Events analyzed from File = ', icounter

@@ -43,7 +43,9 @@ point.rotateY(25.0/59.27)
 print point.toString()
 
 
-layer = ecDetector.getSector(0).getSuperlayer(0).getLayer(0)
+#layer = ecDetector.getSector(0).getSuperlayer(0).getLayer(0)
+layer   = factory.createLayer(data,0,0,0)
+layerIN = factory.createLayer(data,0,0,1)
 
 ncomp = layer.getNumComponents()
 
