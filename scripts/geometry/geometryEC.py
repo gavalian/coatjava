@@ -34,7 +34,8 @@ path.addPoint(pathMag*Math.sin(pathTheta)*Math.cos(pathPhi),pathMag*Math.sin(pat
 hits = ecDetector.getHits(path)
 print '\n-->\n'
 for hit in hits:
-    print hit.toString()
+    if(hit.getLayerId()<3):
+        print hit.toString()
 
 
 point = Point3D(0.0,0.0,697.7)
@@ -51,10 +52,10 @@ ncomp = layer.getNumComponents()
 
 for i in range(0,ncomp):
     point = layer.getComponent(i).getMidpoint()
-    print 'PCAL U View Paddle ',i+1,point.toString()
+    #print 'PCAL U View Paddle ',i+1,point.toString()
 
 layerIN = ecDetector.getSector(0).getSuperlayer(1).getLayer(0)
 
 for i in range(0,layerIN.getNumComponents()):
     point = layerIN.getComponent(i).getMidpoint()
-    print 'ECINNER U View Paddle ',i+1,point.toString()
+    #print 'ECINNER U View Paddle ',i+1,point.toString()

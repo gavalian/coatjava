@@ -96,7 +96,6 @@
  <section name = "HBTracks" tag = "1315" info = "reconstructed hit-based tracking DC tracks">
    	<column name = "ID" num = "1" type = "int32" info = "ID"/>
    	<column name = "sector" num = "1" type = "int32" info = "sector"/>
-   	<column name = "region" num = "3" type = "int32" info = "region"/>
    	<column name = "c3_x" num = "4" type = "float64" info = "Region 3 cross x-position in the lab"/>
    	<column name = "c3_y" num = "5" type = "float64" info = "Region 3 cross y-position in the lab"/>
    	<column name = "c3_z" num = "6" type = "float64" info = "Region 3 cross z-position in the lab"/>
@@ -105,42 +104,23 @@
  	<column name = "c3_uz" num = "9" type = "float64" info = "Region 3 cross unit z-direction vector in the lab"/>
    	<column name = "q" num = "10" type = "int32" info = "charge"/>
        <column name = "p" num = "11" type = "float64" info = "momentum"/>
+	<column name ="pathlength" num = "12" type = "float64" info = "path length from the cross of region 3 to z =0 in cm"/>
+	<column name ="Vtx0_x" num = "13" type = "float64" info = "Vertex x-position of the swam track at z=0 in the lab frame"/>
+	<column name ="Vtx0_y" num = "14" type = "float64" info = "Vertex y-position of the swam track at z=0 in the lab frame"/>
+	<column name ="Vtx0_z" num = "15" type = "float64" info = "Vertex z-position of the swam track at z=0 in the lab frame"/>
+	<column name ="p0_x" num = "16" type = "float64" info = "3-momentum x-coordinate of the swam track at z=0 in the lab frame"/>
+	<column name ="p0_y" num = "17" type = "float64" info = "3-momentum y-coordinate of the swam track at z=0 in the lab frame"/>
+	<column name ="p0_z" num = "18" type = "float64" info = "3-momentum z-coordinate of the swam track at z=0 in the lab frame"/>
+	<column name ="VtxAtMM_x" num = "19" type = "float64" info = "Vertex x-position of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+	<column name ="VtxAtMM_y" num = "20" type = "float64" info = "Vertex y-position of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+	<column name ="VtxAtMM_z" num = "21" type = "float64" info = "Vertex z-position of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+	<column name ="pAtMM_x" num = "22" type = "float64" info = "3-momentum x-coordinate of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+	<column name ="pAtMM_y" num = "23" type = "float64" info = "3-momentum y-coordinate of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+	<column name ="pAtMM_z" num = "24" type = "float64" info = "3-momentum z-coordinate of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+
  </section>
 </bank>
 
-<bank name = "HBTrackingExp" tag = "1330" info = "reconstructed hit-based tracking DC info">
- <section name = "HBHits" tag = "1331" info = "reconstructed hit-based tracking DC hits">
-      <column name = "sector" num = "1" type = "int32" info = "hit sector"/>
-      <column name = "superlayer" num = "2" type = "int32" info = "hit superlayer"/>
-      <column name = "layer" num = "3" type = "int32" info = "hit layer"/>
-      <column name = "wire" num = "4" type = "int32" info = "hit wire"/>
-      <column name = "LR" num = "5" type = "int32" info = "left-right ambiguity assignment"/>
-      <column name = "locX" num = "6" type = "float64" info = "x in planar local coordinate system"/>
-      <column name = "locY" num = "7" type = "float64" info = "y in planar local coordinate"/> 
-      <column name = "X" num = "8" type = "float64" info = "wire x-coordinate  in tilted-sector"/>
-      <column name = "Z" num = "9" type = "float64" info = "wire z-coordinate  in tilted-sector"/>
-      <column name = "clusterID" num = "10" type = "int32" info = "associated cluster ID"/>
-      <column name = "segmentID" num = "11" type = "int32" info = "associated segment ID"/>
-      <column name = "crossID" num = "12" type = "int32" info = "associated cross ID"/>
-      <column name = "trackID" num = "13" type = "int32" info = "associated track ID"/>
- </section>
- <section name = "HBClusters" tag = "1332" info = "reconstructed hit-based tracking DC clusters">
-      <column name = "ID" num = "1" type = "int32" info = "ID"/>
-      <column name = "sector" num = "2" type = "int32" info = "sector"/>
-      <column name = "superlayer" num = "3" type = "int32" info = "superlayer"/>
-      <column name = "segmentID" num = "4" type = "int32" info = "associated segment ID"/>
-      <column name = "crossID" num = "5" type = "int32" info = "associated cross ID"/>
-      <column name = "trackID" num = "6" type = "int32" info = "associated track ID"/>
- </section> 
- 
- <section name = "HBSegments" tag = "1333" info = "reconstructed hit-based tracking DC segments">
-      <column name = "ID" num = "1" type = "int32" info = "ID"/>
-      <column name = "sector" num = "1" type = "int32" info = "sector"/>
-      <column name = "superlayer" num = "2" type = "int32" info = "superlayer"/>
-      <column name = "crossID" num = "3" type = "int32" info =	"associated cross ID"/>
-      <column name = "trackID" num = "4" type = "int32" info = "associated track ID"/>
- </section>
- </bank>
 
  <bank name = "TimeBasedTrkg" tag = "1320" info = "reconstructed time-based tracking DC info">
    <section name = "TBHits" tag = "1321" info = "reconstructed time-based tracking DC hits">
@@ -148,7 +128,7 @@
        <column name = "superlayer" num = "2" type = "int32" info = "hit superlayer"/>
        <column name = "layer" num = "3" type = "int32" info = "hit layer"/>
        <column name = "wire" num = "4" type = "int32" info = "hit wire"/>
-       <column name = "lr" num = "5" type = "int32" info = "left-right ambiguity assignment"/>
+       <column name = "LR" num = "5" type = "int32" info = "left-right ambiguity assignment"/>
        <column name = "time" num = "6" type = "float64" info = "time"/>
        <column name = "doca" num = "7" type = "float64" info = "distance to the wire"/>
        <column name = "X" num = "8" type = "float64" info = "hit x-coordinate  in tilted-sector"/>
@@ -157,6 +137,7 @@
        <column name = "segmentID" num = "11" type = "int32" info = "associated segment ID"/>
        <column name = "crossID" num = "12" type = "int32" info = "associated cross ID"/>
        <column name = "trackID" num = "13" type = "int32" info = "associated track ID"/>
+       <column name = "timeResidual" num = "14" type = "float64" info = "hit residual"/>
    </section>
      
    <section name = "TBClusters" tag = "1322" info = "reconstructed time-based tracking DC clusters">
@@ -199,7 +180,6 @@
    <section name = "TBTracks" tag = "1325" info = "reconstructed time-based tracking DC tracks">
    	<column name = "ID" num = "1" type = "int32" info = "ID"/>
    	<column name = "sector" num = "2" type = "int32" info = "sector"/>
-   	<column name = "region" num = "3" type = "int32" info = "region"/>
    	<column name = "c3_x" num = "4" type = "float64" info = "Region 3 cross x-position in the lab"/>
    	<column name = "c3_y" num = "5" type = "float64" info = "Region 3 cross y-position in the lab"/>
    	<column name = "c3_z" num = "6" type = "float64" info = "Region 3 cross z-position in the lab"/>
@@ -208,6 +188,20 @@
    	<column name = "c3_uz" num = "9" type = "float64" info = "Region 3 cross unit z-direction vector in the lab"/>
    	<column name = "q" num = "10" type = "int32" info = "charge"/>
    	<column name = "p" num = "11" type = "float64" info = "momentum"/>  
+	<column name ="pathlength" num = "12" type = "float64" info = "path length from the cross of region 3 to z =0 in cm"/>
+	<column name ="Vtx0_x" num = "13" type = "float64" info = "Vertex x-position of the swam track at z=0 in the lab frame"/>
+	<column name ="Vtx0_y" num = "14" type = "float64" info = "Vertex y-position of the swam track at z=0 in the lab frame"/>
+	<column name ="Vtx0_z" num = "15" type = "float64" info = "Vertex z-position of the swam track at z=0 in the lab frame"/>
+	<column name ="p0_x" num = "16" type = "float64" info = "3-momentum x-coordinate of the swam track at z=0 in the lab frame"/>
+	<column name ="p0_y" num = "17" type = "float64" info = "3-momentum y-coordinate of the swam track at z=0 in the lab frame"/>
+	<column name ="p0_z" num = "18" type = "float64" info = "3-momentum z-coordinate of the swam track at z=0 in the lab frame"/>
+	<column name ="VtxAtMM_x" num = "19" type = "float64" info = "Vertex x-position of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+	<column name ="VtxAtMM_y" num = "20" type = "float64" info = "Vertex y-position of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+	<column name ="VtxAtMM_z" num = "21" type = "float64" info = "Vertex z-position of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+	<column name ="pAtMM_x" num = "22" type = "float64" info = "3-momentum x-coordinate of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+	<column name ="pAtMM_y" num = "23" type = "float64" info = "3-momentum y-coordinate of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+	<column name ="pAtMM_z" num = "24" type = "float64" info = "3-momentum z-coordinate of the swam track at z=160cm (1st MM plane estimate) in the lab frame"/>
+
    </section>
 </bank>
 </evio_dictionary>
