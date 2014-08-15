@@ -70,8 +70,13 @@ while(reader.hasEvent()):
     ecProc.processEvent(event)
     bench.pause('ecrec')
 
+    #if(event.hasBank('FTOFRec::ftofhits')):
+    #    print '>>>>>>>>>>>>>> found bank FTOFRec::ftofhits'
+    #if(event.hasBank('ECRec::clusters')):
+    #    print '>>>>>>>>>>>>>> found bank ECREC'
+
     bench.resume('sebrec')
-    #sebProc.processEvent(event)
+    sebProc.processEvent(event)
     bench.pause('sebrec')
 
     writer.writeEvent(event)
