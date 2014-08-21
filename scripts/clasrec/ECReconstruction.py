@@ -12,6 +12,7 @@ from  org.jlab.evio.clas12  import EvioDataBank
 from  org.jlab.evio.clas12  import EvioDataSync
 from  org.jlab.rec.ftof     import FTOFReconstruction
 from  org.jlab.rec.ec       import ECReconstruction
+from  org.jlab.clas12.seb   import SEBEventBuilderDebug
 from  org.jlab.clas12.utils import Benchmark
 
 #-----------------------------------------------------------
@@ -30,6 +31,10 @@ reader.open(inputFile)
 
 ecProc = ECReconstruction()
 ecProc.init()
+
+sebDebug = SEBEventBuilderDebug()
+sebDebug.init()
+
 bench = Benchmark()
 bench.addTimer('reader')
 bench.addTimer('ecrec')
@@ -43,6 +48,7 @@ while(reader.hasEvent()):
     event = reader.getNextEvent()
     bench.pause('reader')
     #print '----> processing the event ------------------------------------'
+    sebDebug.processEvent(event)
     bench.resume('ecrec')
     ecProc.processEvent(event)
     bench.pause('ecrec')

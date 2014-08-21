@@ -75,20 +75,43 @@
 </bank>
 
 <bank name="ECRec" tag="1520" info="EC Cluster Information Information">
-  <section name="clusters" tag="1524" num="0" info="Reconstructed clusters">
+  <section name="hits" tag="1521" num="0" info="Reconstructed hits">
+    <column name = "sector"      num = "1"  type = "int32"   info = "sector number"/>
+    <column name = "superlayer"  num = "2"  type = "int32"   info = "sector number"/>
+    <column name = "view"        num = "3"  type = "int32"   info = "sector number"/>
+    <column name = "strip"       num = "4"  type = "int32"   info = "sector number"/>
+    <column name = "energy"      num = "5"  type = "float64" info = "sector number"/>
+    <column name = "time"        num = "6"  type = "float64" info = "sector number"/>
+  </section>
+  <section name="peaks" tag="1522" num="0" info="Reconstructed hits">
+    <column name = "sector"      num = "1"  type = "int32"   info = "sector number (1..6)"/>
+    <column name = "superlayer"  num = "2"  type = "int32"   info = "PCAL=0, EC inner=1, EC outter=2"/>
+    <column name = "view"        num = "3"  type = "int32"   info = "U=0,V=1,W=2"/>
+    <column name = "energy"      num = "4"  type = "float64" info = "Peak Energy"/>
+    <column name = "time"        num = "5"  type = "float64" info = "Peak Time"/>
+    <column name = "Xo"          num = "6"  type = "float64" info = "strip origin X coordinate"/>
+    <column name = "Yo"          num = "7"  type = "float64" info = "strip origin Y coordinate"/>
+    <column name = "Zo"          num = "8"  type = "float64" info = "strip origin Z coordinate"/>
+    <column name = "Xe"          num = "9"  type = "float64" info = "strip end    X coordinate"/>
+    <column name = "Ye"          num = "10" type = "float64" info = "strip end    Y coordinate"/>
+    <column name = "Ze"          num = "11" type = "float64" info = "strip end    Z coordinate"/>
+    <column name = "width"       num = "12" type = "float64" info = "width of the peak"/>
+  </section>
+  <section name="clusters" tag="1523" num="0" info="Reconstructed clusters">
     <column name = "sector"      num = "1"  type = "int32"   info = "sector number"/>
     <column name = "superlayer"  num = "2"  type = "int32"   info = "superlayer"/>
     <column name = "energy"      num = "3"  type = "float64" info = "superlayer"/>
-    <column name = "chi2"        num = "4"  type = "float64" info = "superlayer"/>
-    <column name = "widthU"      num = "5"  type = "float64" info = "width in U layer"/>
-    <column name = "widthV"      num = "6"  type = "float64" info = "width in V layer"/>
-    <column name = "widthW"      num = "7"  type = "float64" info = "width in W layer"/>
-    <column name = "X"           num = "8"  type = "float64" info = "x coordinate"/>
-    <column name = "Y"           num = "9"  type = "float64" info = "y coordinate"/>
-    <column name = "Z"           num = "10" type = "float64" info = "z coordinate"/>
-    <column name = "dX"          num = "11" type = "float64" info = "x coordinate error"/>
-    <column name = "dY"          num = "12" type = "float64" info = "y coordinate error"/>
-    <column name = "dZ"          num = "13" type = "float64" info = "z coordinate error"/>
+    <column name = "time"        num = "4"  type = "float64" info = "superlayer"/>
+    <column name = "chi2"        num = "5"  type = "float64" info = "superlayer"/>
+    <column name = "widthU"      num = "6"  type = "float64" info = "width in U layer"/>
+    <column name = "widthV"      num = "7"  type = "float64" info = "width in V layer"/>
+    <column name = "widthW"      num = "8"  type = "float64" info = "width in W layer"/>
+    <column name = "X"           num = "9"  type = "float64" info = "x coordinate"/>
+    <column name = "Y"           num = "10" type = "float64" info = "y coordinate"/>
+    <column name = "Z"           num = "12" type = "float64" info = "z coordinate"/>
+    <column name = "dX"          num = "13" type = "float64" info = "x coordinate error"/>
+    <column name = "dY"          num = "14" type = "float64" info = "y coordinate error"/>
+    <column name = "dZ"          num = "15" type = "float64" info = "z coordinate error"/>
   </section>
 </bank>
 </evio_dictionary>

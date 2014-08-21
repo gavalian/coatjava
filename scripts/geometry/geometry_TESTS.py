@@ -1,48 +1,28 @@
-
-from org.jlab.detector.ftof import CLASFTOFDetector
-from org.jlab.detector.base import DetectorDescriptor
-from org.jlab.geom  import Path3D,Face3D,Line3D,Point3D
+from org.jlab.geom.prim  import Path3D,Face3D,Line3D,Point3D,Transformation3D
+from org.jlab.geom.detector.ec   import ECFactory
+from org.jlab.clas12.dbdata import DataBaseLoader
 import random
 import math
-from Particle import Particle
 
 
-ftof = CLASFTOFDetector()
-ftof.initXML('../../lib/geometry/FTOFPaddles_CLAS.xml')
+rootVolume  = Point3D(2170.0799,0.0,6789.8397)
+layerVolume = Point3D(0.0,0.0,-9.03)
+paddle      = Point3D(-0.668675418863381,0,0)
 
-sector = 0
+data = DataBaseLoader.getCalorimeterConstants()
+factory = ECFactory()
+ecDetector   = factory.createDetectorCLAS(data)
 
-for c in range(0,23):
-    desc = DetectorDescriptor(0,sector,0,0,c)
-    print desc.isValid()
-    print ftof.getMidpoint(desc).x(),ftof.getMidpoint(desc).y(),ftof.getMidpoint(desc).z(),ftof.getLength(desc)
-    line = ftof.getLine(0,0,0,c)
-    print 'LINE',line.origin().x(),line.origin().y(),line.origin().z()
-    print 'LINE',line.end().x(),line.end().y(),line.end().z()
-    desc.set(0,0,0,0,0)
-    plane = ftof.getPlane(desc)
-    print plane.toString()
+line = ecDetector.getSector(0).getSuperlayer(0).getLayer(0).getComponent(42).getLine()
+print line.midpoint().toString()
+mid = line.midpoint()
 
-alpha = 30.0/57.29
-x2 = 700.0*math.cos(alpha)
-y2 = 700.0*math.sin(alpha)
-x3 = 700.0*math.cos(-alpha)
-y3 = 700.0*math.sin(-alpha)
-face_s1 = Face3D(0.0,0.0,600.0,x2,y2,600.0,x3,y3,600.0)
-
-p = Particle()
-point = Point3D()
-for i in range(0,100):
-    print '>>>>>>>>>>>>>>>>>> EVENT = ',i
-    p.setRandom(11,-1)
-    path = p.getPath()
-    print path.toString()
-    line = Line3D(path.getNode(0),path.getNode(1))
-    if Face3D.intersection(face_s1,line,point)==True:
-        print 'found intersection---> ', point.x(),point.y(),point.z()
-    else:
-        print '--------->  no intersection'
-    hits = ftof.getLayerHits(path)
-    if hits.size()>0:
-        print '-------------> hit list.............. size = ',hits.size()
-    #print path.toString()
+print 'paddle = ', paddle.toString()
+#paddle.translateXYZ(0.,0.,-90.3)
+#paddle.translateXYZ(rootVolume.x(),rootVolume.y(),rootVolume.z())
+print 'paddle translated = ', paddle.toString()
+rV = Point3D(mid.x()-paddle.x(),mid.y()-paddle.y(),mid.z()-paddle.z()+9.03)
+print 'coord = ', rV.toString()
+paddle.translateXYZ(0.,0.,-9.3)
+paddle.translateXYZ(rV.x(),rV.y(),rV.z())
+print 'paddle translated = ', paddle.toString()
