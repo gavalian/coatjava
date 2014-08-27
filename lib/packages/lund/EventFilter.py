@@ -7,11 +7,19 @@ reader = LundReader(file)
 
 fileOut = open('lund_output.data','w')
 
-for i in range(0,800):
-    reader.readEvent()
-    print '----> Reading event',i
-    if(reader.getPidCount(321)==1 and reader.getPidCount(-321)==1 and reader.getPidCount(22)==0):
+icounter = 0
+filtercounter = 0
+while(reader.readEvent()):
+    #print '----> Reading event',icounter
+    icounter = icounter + 1
+    if(reader.eventFilter([11,321,-321,2212])==True):
+        #print '---> found event at record ',icounter
+        filtercounter = filtercounter + 1
         event = reader.getEvent()
         for line in event:
-            print line,
+            #print line,
             fileOut.write(line)
+
+
+#-----------------------------------------------------
+print '--> Events read = ',icounter,'  events filtered = ',filtercounter

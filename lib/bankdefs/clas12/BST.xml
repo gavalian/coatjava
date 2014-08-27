@@ -35,30 +35,30 @@
     </bank>
     
     <bank name = "BSTRec" tag = "110" info = "Reconstructed BST Information">
-        <section name = "Hits" tag = "111" info = "reconstructed BST hits on track">
-            <column name = "sector"      num = "1" type = "int8"   info = "hit sector"/>
-            <column name = "layer"       num = "2" type = "int8"   info = "hit layer"/>
-            <column name = "wire"        num = "3" type = "int16"   info = "hit strip"/>
-            <column name = "fitResidual" num = "4" type = "float64" info = "fitted hit residual"/>
-            <column name = "trkingStat"  num = "5" type = "int8"   info = "tracking status"/>
-            <column name = "clusterID"   num = "6" type = "int16"   info = "associated cluster ID"/>
-            <column name = "crossID"     num = "7" type = "int16"   info = "associated cross ID"/>
-            <column name = "trackID"     num = "8" type = "int16"   info = "associated track ID"/>
-        </section>
-        <section name = "Clusters" tag = "112" info = "reconstructed BST clusters">
-            <column name = "ID"       num = "1" type = "int16"   info = "ID"/>
-            <column name = "sector"   num = "2" type = "int8"   info = "sector"/>
-            <column name = "layer"    num = "3" type = "int8"   info = "layer"/>
-            <column name = "size"     num = "4" type = "int8"   info = "cluster size"/>
+      <section name = "Hits" tag = "111" info = "reconstructed BST hits on track">
+        <column name = "sector"      num = "1" type = "int32"   info = "hit sector"/>
+        <column name = "layer"       num = "2" type = "int32"   info = "hit layer"/>
+        <column name = "wire"        num = "3" type = "int32"   info = "hit strip"/>
+        <column name = "fitResidual" num = "4" type = "float64" info = "fitted hit residual"/>
+        <column name = "trkingStat"  num = "5" type = "int32"   info = "tracking status"/>
+        <column name = "clusterID"   num = "6" type = "int32"   info = "associated cluster ID"/>
+        <column name = "crossID"     num = "7" type = "int32"   info = "associated cross ID"/>
+        <column name = "trackID"     num = "8" type = "int32"   info = "associated track ID"/>
+      </section>
+      <section name = "Clusters" tag = "112" info = "reconstructed BST clusters">
+            <column name = "ID"       num = "1" type = "int32"   info = "ID"/>
+            <column name = "sector"   num = "2" type = "int32"   info = "sector"/>
+            <column name = "layer"    num = "3" type = "int32"   info = "layer"/>
+            <column name = "size"     num = "4" type = "int32"   info = "cluster size"/>
             <column name = "ETot"     num = "5" type = "float64" info = "cluster total energy"/>
             <column name = "seedE"    num = "6" type = "float64" info = "cluster seed strip energy"/>
-            <column name = "crossID"  num = "7" type = "int16"   info = "associated cross ID"/>
-            <column name = "trackID"  num = "8" type = "int16"   info = "associated track ID"/>
+            <column name = "crossID"  num = "7" type = "int32"   info = "associated cross ID"/>
+            <column name = "trackID"  num = "8" type = "int32"   info = "associated track ID"/>
         </section>
         <section name = "Crosses" tag = "113" info = "reconstructed BST crosses">
-            <column name = "ID"      num = "1" type = "int16"    info = "ID"/>
-            <column name = "sector"  num = "2" type = "int8"    info = "sector"/>
-            <column name = "region"  num = "3" type = "int8"    info = "region"/>
+            <column name = "ID"      num = "1" type = "int32"    info = "ID"/>
+            <column name = "sector"  num = "2" type = "int32"    info = "sector"/>
+            <column name = "region"  num = "3" type = "int32"    info = "region"/>
             <column name = "x"       num = "4" type = "float64"  info = "BST cross x-coordinate"/>
             <column name = "y"       num = "5" type = "float64"  info = "BST cross y-coordinate"/>
             <column name = "z"       num = "6" type = "float64"  info = "BST cross z-coordinate"/>
@@ -68,18 +68,18 @@
             <column name = "ux"      num = "10" type = "float64" info = "BST cross x-direction (track unit tangent vector at the cross)"/>
             <column name = "uy"      num = "11" type = "float64" info = "BST cross y-direction (track unit tangent vector at the cross)"/>
             <column name = "uz"      num = "12" type = "float64" info = "BST cross z-direction (track unit tangent vector at the cross)"/>
-            <column name = "trackID" num = "13" type = "int16"   info = "associated track ID"/>
+            <column name = "trackID" num = "13" type = "int32"   info = "associated track ID"/>
         </section>
         <section name = "Tracks" tag = "114" info = "reconstructed BST tracks">
-            <column name = "ID"            num = "1"  type = "int16"    info = "ID"/>
-            <column name = "fittingMethod" num = "2"  type = "int8"    info = "fitting method (1 for global fit, 2 for Kalman Filter)"/>
+            <column name = "ID"            num = "1"  type = "int32"    info = "ID"/>
+            <column name = "fittingMethod" num = "2"  type = "int32"    info = "fitting method (1 for global fit, 2 for Kalman Filter)"/>
             <column name = "c_x"           num = "3"  type = "float64"  info = "Last BST Region cross x-position in the lab"/>
             <column name = "c_y"           num = "4"  type = "float64"  info = "Last BST Region cross y-position in the lab"/>
             <column name = "c_z"           num = "5"  type = "float64"  info = "Last BST Region cross z-position in the lab"/>
             <column name = "c_ux"          num = "6"  type = "float64"  info = "Last BST Region cross unit x-direction vector in the lab"/>
             <column name = "c_uy"          num = "7"  type = "float64"  info = "Last BST Region cross unit y-direction vector in the lab"/>
             <column name = "c_uz"          num = "8"  type = "float64"  info = "Last BST Region cross unit z-direction vector in the lab"/>
-            <column name = "q"             num = "9"  type = "int8"    info = "charge"/>
+            <column name = "q"             num = "9"  type = "int32"    info = "charge"/>
             <column name = "p"             num = "10" type = "float64"  info = "total momentum"/>
             <column name = "pt"            num = "11" type = "float64"  info = "transverse momentum"/>
             <column name = "phi0"          num = "12" type = "float64"  info = "helical track fit parameter: phi at DOCA" />

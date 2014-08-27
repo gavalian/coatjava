@@ -22,9 +22,10 @@ factory = BSTFactory()
 
 
 viewer = CLASVisualizer(100,100,1400,1200)
-viewer.setBackgroundColor(Color(150,150,150))
-viewer.getDisplay().setBackgroundColor(Color(150,150,150))
+viewer.setBackgroundColor(Color(150,150,255))
+viewer.getDisplay().setBackgroundColor(Color(150,150,255))
 viewer.setVisible(True)
+viewer.setTransparancy(0.5)
 
 path = Path3D()
 path.addPoint(0.0,0.0,0.0)
