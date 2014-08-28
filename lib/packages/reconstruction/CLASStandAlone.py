@@ -11,6 +11,7 @@ from  org.jlab.rec.ec       import ECReconstruction
 from  org.jlab.clas12.base  import CLASRecStandalone
 from  org.jlab.rec.dc.services import HitBasedTracking
 from  org.jlab.rec.dc.services import TimeBasedTracking
+from  org.jlab.rec.dc          import Constants
 #-----------------------------------------------------------
 # Initilizing EvioSource object. It in turn initializes 
 # EvioFactory which loads the dictionary from directory
@@ -26,6 +27,8 @@ dcRecTB  = TimeBasedTracking()
 scRec    = SCReconstruction()
 ecRec    = ECReconstruction()
 sebRec   = SEBReconstruction()
+
+Constants.useKalmanFilter = False
 
 clasREC.add(dcRecHB)
 clasREC.add(dcRecTB)
