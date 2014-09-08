@@ -48,12 +48,15 @@ class LundReader:
             if(id==pid):
                 pcounter = pcounter + 1
         return pcounter
+
     def getParticleCount(self):
         return len(self.eventParticles)
 
-    def eventFilter(self,particles):
+    def eventFilter(self,particles,exclusive):
+        nparticles = 0
         pmap = {}
         for item in particles:
+            nparticles = nparticles + 1
             if item in pmap:
                 value = pmap[item]
                 value = value + 1
@@ -61,9 +64,13 @@ class LundReader:
             else:
                 pmap[item] = 1
 
+        if(exclusive==True):
+            if(self.getParticleCount()!=nparticles):
+                return False
         #print pmap
         for key in pmap.keys():
             if(self.getPidCount(key)!=pmap[key]):
                 return False
+        
         return True
 

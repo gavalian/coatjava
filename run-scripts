@@ -44,15 +44,14 @@ done
 #--------------------------------------------------------------
 # This part Adds Scavis libraries to the distribution
 # Freehep libraries 
-for i in `ls -a $DATAMINING/lib/scavis/freehep/*.jar`
-do
-if [ -z "${JYPATH}" ] ; then
-JYPATH="$i"
-else
-JYPATH=${JYPATH}:"$i"
-fi
-done
-
+#for i in `ls -a $DATAMINING/lib/scavis/freehep/*.jar`
+#do
+#if [ -z "${JYPATH}" ] ; then
+#JYPATH="$i"
+#else
+#JYPATH=${JYPATH}:"$i"
+#fi
+#done
 #--------------------------------------------------------------
 # jehep libraries
 #for i in `ls -a $DATAMINING/lib/scavis/jehep/*.jar`
