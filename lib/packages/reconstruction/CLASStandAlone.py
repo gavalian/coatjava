@@ -22,7 +22,13 @@ from  org.jlab.clas12.seb   import SEBEventBuilderDebug
 
 inputFile = sys.argv[1]
 
+    
 clasREC = CLASRecStandalone(inputFile)
+
+if(len(sys.argv)>2):
+    eventToAnalize = int(sys.argv[2])
+    print '*************** SET EVENT FILTER = ',eventToAnalize , '***************'
+    clasREC.setRecEvent(eventToAnalize)
 
 dcRecHB  = HitBasedTracking()
 dcRecTB  = TimeBasedTracking()

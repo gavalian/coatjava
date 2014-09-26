@@ -3,16 +3,14 @@
         <detector name="experiments/clas12/ftof/ftof"        factory="TEXT" variation="original"/>
         <detector name="experiments/clas12/pcal/pcal"        factory="TEXT" variation="original"/>
 
-	<option name="INTEGRATEDRAW" value="flux, dc, ec, pcal"/>
 	<option name="geometry" value="800x600"/>
 	<option name="USE_GUI" value="0"/>	
-	<option name="BEAM_P"   value="proton, 3.0*GeV, 20*deg, 0*deg"/>
+	<option name="BEAM_P"   value="kaon+, 3.0*GeV, 20*deg, 0*deg"/>
 	<option name="SPREAD_P" value="2.0*GeV, 15*deg, 0*deg"/>
 	<option name="OUTPUT" value="evio, out.evio"/>
-	<option name="SAVE_ALL_MOTHERS" value="1"/>
 
 	<option name="PHYSICS" value="FTFP_BERT + STD + Optical"/>
-	<option name="PRINT_EVENT" value="1"/>
+	<option name="PRINT_EVENT" value="100"/>
 	<option name="HALL_FIELD" value="clas12-torus"/>
 	<option name="SCALE_FIELD" value="clas12-torus, -1"/>
 </gcard>
