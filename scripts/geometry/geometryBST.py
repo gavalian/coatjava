@@ -27,10 +27,34 @@ print data.toString()
 factory  = BSTFactory()
 bstLayer = factory.createRingLayer(data,0,1,0)
 
-ncomp = bstLayer.getNumComponents()
 
+sectorMap = {0:10,1:14,2:18,3:24}
+
+transform = factory.getDetectorTransform(data)
+for sec in range(0,4):
+    nlayers = sectorMap[sec]
+    for supl in range(0,2):
+        print ' sector = ',sec, '  superlayer = ', supl, '  nlayers = ',nlayers
+        for layer in range(0,nlayers):
+            print ' sector = ',sec, '  superlayer = ', supl, ' layer = ',layer
+            tr = transform.get(sec,supl,layer)
+            tr.show()
+
+
+#-------------------------------------------------------------------
+# Use the transformation to get wire positions for 
+# sector 2 superlayer 1 and layer 8
+#-------------------------------------------------------------------
+
+ncomp = bstLayer.getNumComponents()
 for i in range(0,256):
     line = bstLayer.getComponent(i).getLine()
     print 'COMPONENT ',i
     line.show()
+    tr = transform.get(2,1,8)
+    nline = Line3D()
+    nline.copy(line)
+    tr.apply(nline)
+    nline.show()
 
+    
