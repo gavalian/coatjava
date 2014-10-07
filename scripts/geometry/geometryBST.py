@@ -25,12 +25,13 @@ data = DataBaseLoader.getConstantsBST()
 print data.toString()
 
 factory  = BSTFactory()
-bstLayer = factory.createRingLayer(data,0,1,0)
+bstLayer = factory.createRingLayer(data,0,0,0)
 
 
 sectorMap = {0:10,1:14,2:18,3:24}
 
 transform = factory.getDetectorTransform(data)
+
 for sec in range(0,4):
     nlayers = sectorMap[sec]
     for supl in range(0,2):
