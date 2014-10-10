@@ -46,15 +46,13 @@ viewer.getDisplay().setBackgroundColor(Color(150,150,255))
 viewer.setVisible(True)
 #viewer.setTransparancy(0.5)
 
-viewer.add(bstRingUp.getBoundary(),Color(100,100,255))
+#viewer.add(bstRingUp.getBoundary(),Color(100,100,255))
 #viewer.add(bstRingDown,Color(100,100,155))
-
-boundary = bstRing_2_0.getBoundary()
-boundary.show()
+#boundary = bstRing_2_0.getBoundary()
+#boundary.show()
 #viewer.add(boundary,Color(100,100,155))
-#viewer.add(bstRing_2_1,Color(100,100,155))
-
-#viewer.add(bstRing_0_0,Color(100,100,155))
-#viewer.add(bstRing_0_1,Color(100,100,155))
+viewer.add(bstRing_2_1,Color(100,100,155))
+viewer.add(bstRing_0_0,Color(100,100,155))
+viewer.add(bstRing_0_1,Color(100,100,155))
 
 viewer.update()
