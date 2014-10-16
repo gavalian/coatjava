@@ -1,51 +1,60 @@
 #===================================================================
 # FULL geometry test
 #===================================================================
-from org.jlab.geom.detector.ec    import ECFactory
-from org.jlab.geom.detector.ftof  import FTOFFactory
+from org.jlab.geom.detector.dc       import DCFactory
+from org.jlab.geom.detector.ec       import ECFactory
+from org.jlab.geom.detector.ftof     import FTOFFactory
+from org.jlab.clas12.fastmc          import CLASFastMCSwimmer
+from org.jlab.clas.physics  import Particle
 from org.jlab.clas12.dbdata import DataBaseLoader
-from org.jlab.geom.prim  import Path3D,Face3D,Line3D,Point3D,Transformation3D
-from java.lang import Math
+from java.lang              import Math
+
 import random
 import math
 import sys
-
 #===================================================================
-# 
+#===================================================================
+def getParticle(pid, mom, theta, phi):
+    px = mom*Math.sin(theta)*Math.cos(phi)
+    py = mom*Math.sin(theta)*Math.sin(phi)
+    pz = mom*Math.cos(theta)
+    particle = Particle(pid,px,py,pz,0.0,0.0,0.0)
+    return particle
+
+def getParticleDeg(pid, mom, theta,phi):
+    theta_rad = Math.toRadians(theta)
+    phi_rad   = Math.toRadians(phi)
+    return getParticle(pid,mom,theta_rad,phi_rad)
+#===================================================================
+# MAIN program
 #===================================================================
 
-thetaAngle = sys.argv[1]
-phiAngle   = sys.argv[2]
+particleID  = sys.argv[1]
+particleP   = sys.argv[2]
+particleTh  = sys.argv[3]
+particlePhi = sys.argv[4]
 
-data = DataBaseLoader.getConstantsFTOF()
-print data.toString()
-factory = FTOFFactory()
-ftofDetector   = factory.createDetectorCLAS(data)
-#ecDetector.show()
+dataProvider = DataBaseLoader.getConstantsDC()
+factory      = DCFactory()
+dcDetector   = factory.createDetectorCLAS(dataProvider)
 
-data = DataBaseLoader.getConstantsEC()
-factory = ECFactory()
-ecDetector   = factory.createDetectorCLAS(data)
-ecDetector.show()
 
-pathMag   = 15000.0
-pathPhi   = float(phiAngle)/57.29
-pathTheta = float(thetaAngle)/57.29 
+particle = getParticleDeg(int(particleID),float(particleP),float(particleTh),float(particlePhi))
 
-path = Path3D()
-path.addPoint(0.0,0.0,0.0)
-path.addPoint(pathMag*Math.sin(pathTheta)*Math.cos(pathPhi),pathMag*Math.sin(pathTheta)*Math.sin(pathPhi),pathMag*Math.cos(pathTheta))
+print particle.toString()
 
-hits = ftofDetector.getHits(path)
-print '\n-->\n'
-for hit in hits:
-    print hit.toString()
+swimmer = CLASFastMCSwimmer()
+path    = swimmer.getParticlePath(particle)
 
-ecHits = ecDetector.getHits(path)
-for hit in ecHits:
-    print hit.toString()
+print path.toString()
 
-point = Point3D(0.0,0.0,697.7)
-point.rotateY(25.0/59.27)
+hitList = dcDetector.getHits(path)
 
-print point.toString()
+print '\n\n'
+print '=====|||  D E T E C T O R   H I T S |||=====\n\n'
+
+for hit in hitList:
+    print '\t',hit.toString()
+
+
+print '\n\n\n'

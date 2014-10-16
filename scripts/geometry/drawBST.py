@@ -3,6 +3,7 @@
 #===================================================================
 from org.jlab.geom.detector.bst  import BSTFactory
 from org.jlab.clas12.dbdata      import DataBaseLoader
+from org.jlab.geom.gui           import GeometryFrame
 #===================================================================
 # Geometry primitives
 #===================================================================
@@ -24,36 +25,16 @@ import sys
 data = DataBaseLoader.getConstantsBST()
 print data.toString()
 
-factory  = BSTFactory()
-bstLayer = factory.createRingLayer(data,0,0,0)
+factory   = BSTFactory()
 
+bstLayer0 = factory.createRingLayer(data,0,0,0)
+bstLayer1 = factory.createRingLayer(data,0,0,1)
 
-sectorMap = {0:10,1:14,2:18,3:24}
+frame = GeometryFrame(800,800,10,40);
+frame.setVisible(True)
 
-transform = factory.getDetectorTransform(data)
-
-for sec in range(0,4):
-    nlayers = sectorMap[sec]
-    for supl in range(0,2):
-        print ' sector = ',sec, '  superlayer = ', supl, '  nlayers = ',nlayers
-        for layer in range(0,nlayers):
-            print ' sector = ',sec, '  superlayer = ', supl, ' layer = ',layer
-            tr = transform.get(sec,supl,layer)
-            tr.show()
-
-
-#-------------------------------------------------------------------
-# Use the transformation to get wire positions for 
-# sector 2 superlayer 1 and layer 8
-#-------------------------------------------------------------------
-
-ncomp = bstLayer.getNumComponents()
 for i in range(0,256):
-    line = bstLayer.getComponent(i).getLine()
-    print 'COMPONENT ',i
+    line = bstLayer1.getComponent(i).getLine()
     line.show()
-    tr = transform.get(2,1,8)
-    nline = Line3D()
-    nline.copy(line)
-    tr.apply(nline)
-    nline.show()
+    if i%4==0:
+        frame.addLineXZ(line)
