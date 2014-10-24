@@ -8,7 +8,6 @@ from org.jlab.clas12.fastmc          import CLASFastMCSwimmer
 from org.jlab.clas.physics  import Particle
 from org.jlab.clas12.dbdata import DataBaseLoader
 from java.lang              import Math
-
 import random
 import math
 import sys
@@ -34,10 +33,17 @@ particleP   = sys.argv[2]
 particleTh  = sys.argv[3]
 particlePhi = sys.argv[4]
 
-dataProvider = DataBaseLoader.getConstantsDC()
-factory      = DCFactory()
-dcDetector   = factory.createDetectorCLAS(dataProvider)
+dataDC      = DataBaseLoader.getConstantsDC()
+factory     = DCFactory()
+dcDetector  = factory.createDetectorCLAS(dataDC)
 
+dataEC      = DataBaseLoader.getConstantsEC()
+factory     = ECFactory()
+ecDetector  = factory.createDetectorCLAS(dataEC)
+
+dataSC      = DataBaseLoader.getConstantsFTOF()
+factory     = FTOFFactory()
+scDetector  = factory.createDetectorCLAS(dataSC)
 
 particle = getParticleDeg(int(particleID),float(particleP),float(particleTh),float(particlePhi))
 
@@ -50,11 +56,21 @@ print path.toString()
 
 hitList = dcDetector.getHits(path)
 
+hitsDC  = dcDetector.getHits(path)
+hitsEC  = ecDetector.getHits(path)
+hitsSC  = scDetector.getHits(path)
+
 print '\n\n'
 print '=====|||  D E T E C T O R   H I T S |||=====\n\n'
 
-for hit in hitList:
+for hit in hitsDC:
     print '\t',hit.toString()
+for hit in hitsSC:
+    print '\t',hit.toString()
+for hit in hitsEC:
+    print '\t',hit.toString()
+#for hit in hitList:
+#    print '\t',hit.toString()
 
 
 print '\n\n\n'
