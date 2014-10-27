@@ -88,7 +88,7 @@ clasREC.setRecEvent(recEvent)
 #===================================================
 
 if len(services)<1:
-    services = ['DC','FTOF','EC','EC']
+    services = ['DC','FTOF','EC','EB']
 
 print 'Running Services : ', services
 
