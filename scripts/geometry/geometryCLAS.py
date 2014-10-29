@@ -8,6 +8,7 @@ from org.jlab.clas12.fastmc          import CLASFastMCSwimmer
 from org.jlab.clas.physics  import Particle
 from org.jlab.clas12.dbdata import DataBaseLoader
 from java.lang              import Math
+from org.jlab.geom.prim  import Path3D,Face3D,Line3D,Point3D,Plane3D
 import random
 import math
 import sys
@@ -50,7 +51,10 @@ particle = getParticleDeg(int(particleID),float(particleP),float(particleTh),flo
 print particle.toString()
 
 swimmer = CLASFastMCSwimmer()
-path    = swimmer.getParticlePath(particle)
+#path    = swimmer.getParticlePath(particle)
+path = Path3D()
+path.addPoint(0.0,0.0,0.0)
+path.addPoint(particle.vector().px()*1500,particle.vector().py()*1500,particle.vector().pz()*1500)
 
 print path.toString()
 
