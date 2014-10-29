@@ -37,6 +37,9 @@ def printUsage():
     print '\t-e evt  : reconstruct one event with EVT NUM = evt (bank 10 evio)'
     print '\t-s LIST : list of reconstruction Modules to run (ALL=DC:FTOF:EC:HTCC)'
     print '\n\n'
+    print 'Flags: \n'
+    print '\t-r : run reconstruction with reversed field'
+    print '\n\n'
     print 'Examples: '
     print '\nTo run DC and FTOF reconstruction for 300 events on generated file use:'
     print '\n\t>runReconstruction input.evio -s DC:FTOF -n 300'
@@ -57,10 +60,13 @@ services   = []
 recNumEvents  = -1
 recEvent      = -1
 
-optlist,args = getopt.getopt(sys.argv[2:],'n:o:e:s:')
+optlist,args = getopt.getopt(sys.argv[2:],'n:o:e:s:r')
 #===================================================
 # parse options
 #===================================================
+print optlist
+
+reversedFiled = False
 
 for o,a in optlist:
     print 'o = ',o,' a = ',a
@@ -76,7 +82,8 @@ for o,a in optlist:
         outputFile = a
     if o in "-s":
         services = a.split(':')
-
+    if o in "-r":
+        reversedFiled = True
 
 clasREC = CLASRecStandalone(inputFile)
 clasREC.setOutputFile(outputFile)
@@ -94,6 +101,9 @@ print 'Running Services : ', services
 
 for item in services:
     if item=='DC':
+        if reversedFiled==True:
+            Constants.reverseTorus = True
+            print '\n\n=====> switching to reverse Filed\n\n'
         dcRecHB = HitBasedTracking()
         dcRecTB  = TimeBasedTracking()
         clasREC.add(dcRecHB)
