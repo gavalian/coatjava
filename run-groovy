@@ -1,0 +1,93 @@
+#!/bin/bash
+CLARA_HOME=`dirname $0`
+DATAMINING=`dirname $0`
+CLAS12DIR=`dirname $0` ; export CLAS12DIR
+ 
+CLARA_SERVICES=$CLAS12DIR/lib/services ; export CLARA_SERVICES
+
+#JYTHONPATH=${DATAMINING}/lib/jython
+#echo ${JYTHONPATH}
+
+#--------------------------------------------------------------
+# Adding supporting COAT jar files
+#JYPATH=/Users/gavalian/Work/Software/Release-2.0/coat-java/lib/freehep-physics-2.2.jar
+for i in `ls -a $DATAMINING/lib/clas/*.jar`
+do  
+#echo "$i"
+if [ -z "${JYPATH}" ] ; then
+JYPATH="$i"
+else
+JYPATH=${JYPATH}:"$i"
+fi
+done 
+#--------------------------------------------------------------
+# Adding supporting AIDA jar files
+for i in `ls -a $DATAMINING/lib/clas/core/*.jar`
+do
+if [ -z "${JYPATH}" ] ; then
+JYPATH="$i"
+else
+JYPATH=${JYPATH}:"$i"
+fi
+done
+#--------------------------------------------------------------
+# This part Adds Scavis libraries to the distribution
+# Freehep libraries
+for i in `ls -a $DATAMINING/lib/visualizer/*.jar`
+do
+if [ -z "${JYPATH}" ] ; then
+JYPATH="$i"
+else
+JYPATH=${JYPATH}:"$i"
+fi
+done
+#--------------------------------------------------------------
+# This part Adds Scavis libraries to the distribution
+# Freehep libraries 
+for i in `ls -a $DATAMINING/lib/plotter/*.jar`
+do
+if [ -z "${JYPATH}" ] ; then
+JYPATH="$i"
+else
+JYPATH=${JYPATH}:"$i"
+fi
+done
+#--------------------------------------------------------------
+# jehep libraries
+#for i in `ls -a $DATAMINING/lib/scavis/jehep/*.jar`
+#do
+#if [ -z "${JYPATH}" ] ; then
+#JYPATH="$i"
+#else
+#JYPATH=${JYPATH}:"$i"
+#fi
+#done
+#--------------------------------------------------------------
+# system libraries
+#for i in `ls -a $DATAMINING/lib/scavis/system/*.jar`
+#do
+#if [ -z "${JYPATH}" ] ; then
+#JYPATH="$i"
+#else
+#JYPATH=${JYPATH}:"$i"
+#fi
+#done
+# Adding supporting JHEPWORK jar files
+#for i in `ls -a $DATAMINING/lib/jhepwork/*.jar`
+#do
+#if [ -z "${JYPATH}" ] ; then
+#JYPATH="$i"
+#else
+#JYPATH=${JYPATH}:"$i"
+#fi
+#done
+#echo "path="$JYPATH
+#echo "command = " $1
+
+JYPATH=${JYPATH}:${DATAMINING}/lib/packages
+echo "*****************************************"
+echo "*    Running COAT-JAVA Groovy Scripts   *" 
+echo "*****************************************"
+echo " "
+
+groovy -cp "$JYPATH" $*
