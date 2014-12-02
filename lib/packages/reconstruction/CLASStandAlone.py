@@ -12,6 +12,7 @@ from  org.jlab.clas12.seb   import SEBReconstruction
 from  org.jlab.rec.eb       import CLASEventBuilder
 from  org.jlab.rec.sc       import SCReconstruction
 from  org.jlab.rec.ec       import ECReconstruction
+from  org.jlab.rec.bst.services  import BSTReconstruction
 from  org.jlab.clas12.base  import CLASRecStandalone
 from  org.jlab.rec.bst.services   import BSTReconstruction
 from  org.jlab.rec.dc.services import HitBasedTracking
@@ -95,7 +96,7 @@ clasREC.setRecEvent(recEvent)
 #===================================================
 
 if len(services)<1:
-    services = ['DC','FTOF','EC','EB']
+    services = ['DC','BST','FTOF','EC','EB']
 
 print 'Running Services : ', services
 
@@ -114,6 +115,11 @@ for item in services:
     if item=='EC':
         ecRec    = ECReconstruction()
         clasREC.add(ecRec)
+
+    if item=='BST':
+        bstRec    = BSTReconstruction()
+        clasREC.add(bstRec)
+
     if item=='BST':
         bstRec   = BSTReconstruction()
         clasREC.add(bstRec)

@@ -10,7 +10,8 @@ from  org.jlab.evio.clas12  import EvioDataDictionary
 from  org.jlab.evio.clas12  import EvioSource
 from  org.jlab.evio.clas12  import EvioDataBank
 from  org.jlab.evio.clas12  import EvioDataSync
-from  bst.services     import BSTReconstruction
+from  org.jlab.rec.bst.services  import BSTReconstruction
+#from  bst.services     import BSTReconstruction
 
 #-----------------------------------------------------------
 # Initilizing EvioSource object. It in turn initializes 
@@ -35,7 +36,10 @@ icounter = 0
 while(reader.hasEvent()):
     event = reader.getNextEvent()
     for rec in reco:
-        rec.processEvent(event)
+        try:
+            rec.processEvent(event)
+        except:
+            print 'error'
         icounter = icounter + 1
     writer.writeEvent(event)
     
